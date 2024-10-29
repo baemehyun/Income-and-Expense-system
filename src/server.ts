@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import authRoute from "./routes/authRoute"
+import userRoute from "./routes/userRoute"
 import bodyParser from "body-parser";
 // import passwordhash from "password-hash"
 // const bodyParser = require('body-parser')
@@ -17,6 +18,8 @@ AppDataSource.initialize().then(async () => {
 app.use(bodyParser.json())
 
 app.use("/api/auth",authRoute)
+
+app.use("/api/users",userRoute)
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello guy");
